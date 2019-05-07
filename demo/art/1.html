@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript" src="./template-web.js"></script>
+	<script type="text/javascript" id="template">
+		<h1>{{title}}</h1>
+		{{if books}}
+			{{each books as value i}}
+				<div>{{value}}</div>
+			{{/each}}
+		{{/if}}
+	</script>
+	<script type="text/javascript">
+		window.onload = function(){
+			var data = {
+				title:"图书信息",
+				books:["厚黑学","说话技巧","梦的解析"]
+			};
+			var html = template('template',data);
+			document.getElementById("container").innerHTML = html;
+		}
+	</script>
+</head>
+<body>
+	<div id="container"></div>
+</body>
+</html>

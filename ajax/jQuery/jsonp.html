@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript">
+			var script = document.createElement("script");
+			script.src = "http://demo.com/cross/1.php";
+			var head = document.getElementsByTagName("head")[0];
+			head.appendChild(script);
+			
+			function foo(data){
+				console.log(data.username,data.age);
+			}
+	</script>
+</head>
+<body>
+	
+</body>
+</html>
