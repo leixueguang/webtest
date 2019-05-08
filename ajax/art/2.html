@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>省市县</title>
+	<script type="text/javascript" src="./jquery-3.2.1.min.js"></script>
+	<style type="text/css">
+		#container{
+			width: 500px;
+			height: 500px;
+			margin: auto;
+			padding:10px;
+			background-color: lightgreen;
+			text-align:center;
+		}
+	</style>
+	<script type="text/javascript">
+		$(function(){
+			function queryData(obj,callback){
+				$.ajax({
+					type:"get",
+					url:"http://localhost/art/select.php",
+					data:obj,
+					dataType:"json",
+					success:function(data){
+						callback(data);
+					}
+				});
+			}
+
+			//当页面刷新完成后，请求省的数据
+			queryData({
+				flag:1
+			},function(data){
+				var option = "";
+				$.each(data,function(i,e){
+					option += '<option id="'+e.id+'">'+e.province+'</option>';
+				});
+				$("#province").append(option);
+			});
+
+		});
+	</script>
+</head>
+<body>
+	<div id="container">
+		<label>
+			省：<select id="province">
+				<option>请选择省...</option>
+			</select>
+		</label>
+		<label>
+			市：<select>
+				<option>请选择市...</option>
+			</select>
+		</label>
+		<label>
+			县：<select>
+				<option>请选择县...</option>
+			</select>
+		</label>
+	</div>
+</body>
+</html>

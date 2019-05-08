@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>省市县三级联动</title>
+	<script type="text/javascript" src="./jquery-3.2.1.min.js"></script>
+	<style type="text/css">
+		#container{
+			width: 800px;
+			height: 500px;
+			margin: auto;
+			padding:10px;
+			background-color: lightgreen;
+			text-align:center;
+		}
+	</style>
+	<script type="text/javascript">
+		$(function(){
+			function queryData(obj,callback){
+				$.ajax({
+					type:"get",
+					url:"http://www.demo.com/art/select.php",
+					data:obj,
+					dataType:"json",
+					success:function(data){
+						callback(data);
+					}
+				});
+			}
+
+			//当页面刷新完成后，请求省的数据
+			queryData({
+				flag:1
+			},function(data){
+				var option = "";
+				$.each(data,function(i,e){
+					option += '<option value="' + e.id + '">' + e.province + '</option>';
+				});
+				$("#province").append(option);
+			});
+
+			//选择省份，获取当前选择的省份id，加载市
+			$("#province").change(function(){
+				// alert($(this).val())
+				// //先清空数据，再加载数据
+				$("#city").find("option:gt(0)").remove();
+				queryData({
+					flag:2,
+					pId:$(this).val()
+				},function(data){
+					var option = "";
+					$.each(data,function(i,e){
+					option += '<option value="' + e.id + '">' + e.city + '</option>';
+					});
+					$("#city").append(option);
+				});
+			});
+
+			//选择市，加载县
+			$("#city").change(function(){
+				$("#county option:gt(0)").remove();
+				queryData({
+					flag:3,
+					cId:$(this).val()
+				},function(data){
+					var option = "";
+					$.each(data,function(i,e){
+					option += '<option value="' + e.id + '">' + e.county + '</option>';
+					});
+					$("#county").append(option);
+				});
+			});
+		});
+	</script>
+</head>
+<body>
+	<div id="container">
+		<label>
+			省：<select id="province">
+				<option>请选择省...</option>
+			</select>
+		</label>
+		<label>
+			市：<select id="city">
+				<option>请选择市...</option>
+			</select>
+		</label>
+		<label>
+			县：<select id="county">
+				<option>请选择县...</option>
+			</select>
+		</label>
+	</div>
+</body>
+</html>

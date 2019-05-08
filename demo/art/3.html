@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+		#container{
+			background-color: lightgreen;
+			margin: auto;
+			padding: 10px;
+			text-align: center;
+			width: 600px;
+			min-height:100px;
+		}
+		li{list-style: none;}
+	</style>
+	<script type="text/javascript" src="./jquery-3.2.1.min.js"></script>
+	<script type="text/javascript">
+		$(function(){
+			$("#btn").click(function(){
+				var city = $("#test").val();
+				$.ajax({
+					type:"get",
+					url:"./citycode.php",
+					data:{cityName:city},
+					dataType:"json",
+					success:function(data){
+						$.ajax({
+							type:"get",
+							url:"./cityweather.php",
+							data:{cityCode:data.cityCode},
+							dataType:"json",
+							success:function(data){
+								// console.log(data)
+								data = data.retData;
+								var tag = "<ul><li>城市："+ data.city +"</li></ul>";
+								$("#info").html(tag);
+							}
+						});
+					}
+				});
+			});
+		});
+	</script>
+</head>
+<body>
+	<div id="container">
+		城市：<input type="text" id="test">
+		<input type="button" value="查询" id="btn">
+		<div id="info"></div>
+	</div>
+</body>
+</html>
