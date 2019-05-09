@@ -1,0 +1,57 @@
+/*
+背景样式
+ */
+/*
+第一屏开始
+ */
+.item-1{
+	background:#fadd67 url(../images/t1fpyqfltdxxaiulhh-990-600.png) no-repeat center bottom;
+}
+.first{
+	position: absolute;
+	top: 20%;
+	right: 20%;
+}
+.shirt{
+	position: absolute;
+	top: 48%;
+	right: 54%;
+}
+.shirtcenter{
+	position:absolute;
+	left: 50%;
+	top: 55%;
+	margin-left: -412px;
+}
+/*
+第一屏结束
+ */
+
+
+
+
+
+
+
+
+
+
+
+
+/*
+动画部分
+ */
+.fly{
+	animation:fly 3s linear infinite;
+}
+.shirtfly{
+	animation:shirtfly 2s linear infinite;
+}
+@keyframes fly{
+	50%{top: 35%;}
+	100%{top: 20%;}
+}
+@keyframes shirtfly{
+	50%{top: 50%;}
+	100%{top: 48%;}
+}
