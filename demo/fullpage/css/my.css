@@ -28,6 +28,65 @@
  */
 
 
+/*
+第二屏开始
+ */
+.item-2{
+	background:#84a2d4 url(../images/t1zdgpfi8exxca6rfn-2000-600.png) no-repeat center bottom;
+}
+.secondpage{
+	width: 1000px;
+	height: 500px;
+	background:rgba(0, 0, 0, 0.3);
+	position:absolute;
+	left:50%;
+	bottom:0;
+	transform: translateX(-50%);/*margin-left:-400px;*/
+}
+.search{
+	height:45px;
+	width: 222px;
+	background:url(../images/search.png) no-repeat;
+	position:absolute;
+	right: -30px;
+	bottom:280px;
+	display:none;
+}
+.src{
+	position:absolute;
+	top: 3px;
+	right: 30px;
+	opacity:0;
+}
+.search-02-1{
+	position:absolute;
+	right:370px;
+	bottom:280px;
+	display:none;
+}
+.goods{
+	height: 100px;
+	position:absolute;
+	right:280px;
+	bottom: 210px;
+	display:none;
+}
+.words,.words02{
+	position:absolute;
+	left: 50%;
+	bottom:540px;
+	transform:translateX(-50%);
+}
+.words02{
+	opacity: 0;
+}
+.words{
+	opacity: 1;
+}
+/*
+第二屏结束
+ */
+
 
 
 
