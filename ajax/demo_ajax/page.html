@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>ajax登录验证</title>
+
+	<script>
+		
+		window.onload = function(){
+			
+			var btn = document.getElementById("btn");
+			btn.onclick = function(){
+				var name = document.getElementById("uname").value;
+				var pwd = document.getElementById("pwd").value;
+				// alert(name)
+				//用ajax总共需要以下几步
+				//1、
+				var xhr = new XMLHttpRequest();
+				//2、准备发送
+				xhr.open("get","./page.php?uname="+name+"&pwd="+pwd,true);
+
+				//3、发送请求
+				xhr.send(null);
+				//4、回调函数
+
+				xhr.onreadystatechange = function(){
+					if(xhr.readyState == 4){
+						if (xhr.status == 200) {
+							var data = xhr.responseText;
+							var info = document.getElementById("info");
+							if(data == "1"){
+								info.innerHTML = "登录成功";
+							}else if(data == "2"){
+								info.innerHTML = "用户名或者密码错误";
+							}
+						}
+					}
+				}
+			}
+
+		}
+
+	</script>
+</head>
+<body>
+	<form>
+		用户名：<input type="text" name="uname" id="uname"><span id="info"></span>
+		<br>
+		密&nbsp;&nbsp;&nbsp;码：<input type="text" name="pwd" id="pwd">
+		<input type="button" id="btn" value="提交">
+	</form>
+</body>
+</html>

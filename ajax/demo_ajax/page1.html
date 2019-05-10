@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>ajax登录验证</title>
+
+	<script>
+		
+		window.onload = function(){
+			
+			var btn = document.getElementById("btn");
+			btn.onclick = function(){
+				var name = document.getElementById("uname").value;
+				var pwd = document.getElementById("pwd").value;
+				
+				//用ajax总共需要以下几步
+				//1、创建XMLHttpResquest对象
+				//为IE6做兼容性
+				var xhr = null;
+				if(window.XMLHttpResquest){
+					xhr = new XMLHttpResquest();
+				}else{
+					xhr = new ActiveXObject("Microsoft.XMLHTTP");
+				}
+				//2、准备发送
+				xhr.open("post","./page1.php",true);
+
+				//3、发送请求
+				
+				//4、回调函数
+			}
+
+		}
+
+	</script>
+</head>
+<body>
+	<form>
+		用户名：<input type="text" name="uname" id="uname"><span id="info"></span>
+		<br>
+		密&nbsp;&nbsp;&nbsp;码：<input type="text" name="pwd" id="pwd">
+		<input type="button" id="btn" value="提交">
+	</form>
+</body>
+</html>

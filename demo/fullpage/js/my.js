@@ -3,6 +3,7 @@ window.onload =function(){
 		//options here
 		autoScrolling:true,
 		navigation:true,
+		dragAndMove: true,
 		scrollHorizontally: true
 	});
 

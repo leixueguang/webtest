@@ -35,7 +35,6 @@
 				</tr>
 			<?php } ?>
 
-
 		</tbody>
 	</table>
 </body>

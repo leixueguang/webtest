@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript" src="./ajax.js"></script>
+	<script type="text/javascript">
+		window.onload = function(){
+			var btn1 = document.getElementById("btn1");
+			btn1.onclick = function(){
+				ajax();
+			};
+		}
+	</script>
+</head>
+<body>
+	<div id="info"></div>
+	<input type="button" value="点击1" id="btn1">
+</body>
+</html>
